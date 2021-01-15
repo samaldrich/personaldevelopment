@@ -1,6 +1,8 @@
 import sys
 
 # 显示当前棋盘函数 display current board
+
+
 def printBoard(board):
     print('┏━━━┳━━━┳━━━┓')
     print('┃ '+board['1'] + ' ┃ ' + board['2'] + ' ┃ ' + board['3']+' ┃')
@@ -11,11 +13,13 @@ def printBoard(board):
     print('┗━━━┻━━━┻━━━┛')
 
 # 计分板 scorer
+
+
 def LeaderBoard():
     print('======================')
     print('LeaderBoard')
-    print('X: '+str(Xwin)+' Wins')
-    print('O: '+str(Owin)+' Wins')
+    print('X: '+str(Xwins)+' Wins')
+    print('O: '+str(Owins)+' Wins')
     print('======================')
 
 
@@ -26,6 +30,8 @@ def resettheboard():
                 '5': ' ', '6': ' ', '7': ' ', '8': ' ', '9': ' '}
 
 # 验证键盘输入是否为数字1-9 check validation of input
+
+
 def checkCorrectNumber():
     global turn
     global move
@@ -40,6 +46,8 @@ def checkCorrectNumber():
             break
 
 # 验证棋盘格子是否被占用  check occupation of the cells
+
+
 def checkCorrectCell():
     global turn
     global move
@@ -59,8 +67,9 @@ theBoard = {'1': ' ', '2': ' ', '3': ' ', '4': ' ',
             '5': ' ', '6': ' ', '7': ' ', '8': ' ', '9': ' '}
 
 # 初始化计分器 initialize scorer
-Xwin = 0
-Owin = 0
+Xwins = 0
+Owins = 0
+gameTurns = 0
 
 # 简单教程 tutorial
 print('Welcome to Tic-Tac-Toe! Place your marks in the cells, you can type down the numbers to select the cells.\nThe first one who has three marks in a row wins! X goes first!')
@@ -82,8 +91,12 @@ printBoard(theBoard)
 
 
 while True:
-    # X的回合 X's turn
-    turn = 'X'
+    # 检查是谁的回合 check which one's turn
+    gameTurns += 1
+    if gameTurns % 2 == 1:
+        turn = 'X'
+    else:
+        turn = 'O'
     print('It\'s '+turn+'\'s turn, where would you like to move?')
     # 验证键盘输入是否为数字1-9 check validation of input
     checkCorrectNumber()
@@ -91,30 +104,34 @@ while True:
     checkCorrectCell()
     # 把X的选择输入到字典里 assgin X's choice to dictionary
     if move == '1':
-        theBoard['1'] = 'X'
+        theBoard['1'] = turn
     elif move == '2':
-        theBoard['2'] = 'X'
+        theBoard['2'] = turn
     elif move == '3':
-        theBoard['3'] = 'X'
+        theBoard['3'] = turn
     elif move == '4':
-        theBoard['4'] = 'X'
+        theBoard['4'] = turn
     elif move == '5':
-        theBoard['5'] = 'X'
+        theBoard['5'] = turn
     elif move == '6':
-        theBoard['6'] = 'X'
+        theBoard['6'] = turn
     elif move == '7':
-        theBoard['7'] = 'X'
+        theBoard['7'] = turn
     elif move == '8':
-        theBoard['8'] = 'X'
+        theBoard['8'] = turn
     elif move == '9':
-        theBoard['9'] = 'X'
+        theBoard['9'] = turn
     # 显示当前棋盘 display board
     printBoard(theBoard)
 
     # 判断X是否赢了 check if X wins
-    if (theBoard['1'] == 'X' and theBoard['2'] == 'X' and theBoard['3'] == 'X') or (theBoard['4'] == 'X' and theBoard['5'] == 'X' and theBoard['6'] == 'X') or (theBoard['7'] == 'X' and theBoard['8'] == 'X' and theBoard['9'] == 'X') or (theBoard['1'] == 'X' and theBoard['4'] == 'X' and theBoard['7'] == 'X') or (theBoard['2'] == 'X' and theBoard['5'] == 'X' and theBoard['8'] == 'X') or (theBoard['3'] == 'X' and theBoard['6'] == 'X' and theBoard['9'] == 'X') or (theBoard['1'] == 'X' and theBoard['5'] == 'X' and theBoard['9'] == 'X') or (theBoard['3'] == 'X' and theBoard['5'] == 'X' and theBoard['7'] == 'X'):
-        print('X won!')
-        Xwin += 1
+    if (theBoard['1'] == turn and theBoard['2'] == turn and theBoard['3'] == turn) or (theBoard['4'] == turn and theBoard['5'] == turn and theBoard['6'] == turn) or (theBoard['7'] == turn and theBoard['8'] == turn and theBoard['9'] == turn) or (theBoard['1'] == turn and theBoard['4'] == turn and theBoard['7'] == turn) or (theBoard['2'] == turn and theBoard['5'] == turn and theBoard['8'] == turn) or (theBoard['3'] == turn and theBoard['6'] == turn and theBoard['9'] == turn) or (theBoard['1'] == turn and theBoard['5'] == turn and theBoard['9'] == turn) or (theBoard['3'] == turn and theBoard['5'] == turn and theBoard['7'] == turn):
+        print(turn+' won!')
+        if turn == 'X':
+            Xwins += 1
+        else:
+            Owins += 1
+
         LeaderBoard()
         # 是否想再玩一遍 ask permission to play again
         while True:
@@ -127,9 +144,9 @@ while True:
                 break
             elif permission == 'N':
                 LeaderBoard()
-                if Xwin > Owin:
+                if Xwins > Owins:
                     print('Congratuations, X won!')
-                elif Xwin == Owin:
+                elif Xwins == Owins:
                     print('It\'s a draw!')
                 else:
                     print('Congratuations, O won!')
@@ -140,72 +157,6 @@ while True:
         continue
 
     # 判断格子是否满了 check occupation of the board
-    if theBoard['1'] != ' ' and theBoard['2'] != ' ' and theBoard['3'] != ' ' and theBoard['4'] != ' ' and theBoard['5'] != ' ' and theBoard['6'] != ' ' and theBoard['7'] != ' ' and theBoard['8'] != ' ' and theBoard['9'] != ' ':
-        print('It\'s a draw!')
-        print('Let\'s try again!')
-        LeaderBoard()
-        resettheboard()
-        printBoard(theBoard)
-        continue
-
-    # O的回合
-    turn = 'O'
-    print('It\'s '+turn+'\'s turn, where would you like to move?')
-    # 验证输入是否为数字1-9
-    checkCorrectNumber()
-    # 验证棋盘格子是否被占用 check occupation of the cells
-    checkCorrectCell()
-    # 把O的选择输入到字典里 assgin O's choice to dictionary
-    if move == '1':
-        theBoard['1'] = 'O'
-    elif move == '2':
-        theBoard['2'] = 'O'
-    elif move == '3':
-        theBoard['3'] = 'O'
-    elif move == '4':
-        theBoard['4'] = 'O'
-    elif move == '5':
-        theBoard['5'] = 'O'
-    elif move == '6':
-        theBoard['6'] = 'O'
-    elif move == '7':
-        theBoard['7'] = 'O'
-    elif move == '8':
-        theBoard['8'] = 'O'
-    elif move == '9':
-        theBoard['9'] = 'O'
-    # 显示当前棋盘 display board
-    printBoard(theBoard)
-
-    # 判断O是否赢了
-    if (theBoard['1'] == 'O' and theBoard['2'] == 'O' and theBoard['3'] == 'O') or (theBoard['4'] == 'O' and theBoard['5'] == 'O' and theBoard['6'] == 'O') or (theBoard['7'] == 'O' and theBoard['8'] == 'O' and theBoard['9'] == 'O') or (theBoard['1'] == 'O' and theBoard['4'] == 'O' and theBoard['7'] == 'O') or (theBoard['2'] == 'O' and theBoard['5'] == 'O' and theBoard['8'] == 'O') or (theBoard['3'] == 'O' and theBoard['6'] == 'O' and theBoard['9'] == 'O') or (theBoard['1'] == 'O' and theBoard['5'] == 'O' and theBoard['9'] == 'O') or (theBoard['3'] == 'O' and theBoard['5'] == 'O' and theBoard['7'] == 'O'):
-        print('O won!')
-        Owin += 1
-        LeaderBoard()
-        # 是否想再玩一遍
-        while True:
-            print('Would you like to play it again? (Y/N)')
-            permission = input()
-            if permission == 'Y':
-                LeaderBoard()
-                resettheboard()
-                printBoard(theBoard)
-                break
-            elif permission == 'N':
-                LeaderBoard()
-                if Xwin > Owin:
-                    print('Congratuations, X won!')
-                elif Xwin == Owin:
-                    print('It\'s a draw!')
-                else:
-                    print('Congratuations, O won!')
-                sys.exit()
-            else:
-                print('You must enter Y or N!')
-                continue
-        continue
-
-    # 判断格子是否满了
     if theBoard['1'] != ' ' and theBoard['2'] != ' ' and theBoard['3'] != ' ' and theBoard['4'] != ' ' and theBoard['5'] != ' ' and theBoard['6'] != ' ' and theBoard['7'] != ' ' and theBoard['8'] != ' ' and theBoard['9'] != ' ':
         print('It\'s a draw!')
         print('Let\'s try again!')
