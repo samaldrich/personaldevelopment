@@ -124,7 +124,7 @@ while True:
     # 显示当前棋盘 display board
     printBoard(theBoard)
 
-    # 判断X是否赢了 check if X wins
+    # 判断是否赢了 check if this player wins
     if (theBoard['1'] == turn and theBoard['2'] == turn and theBoard['3'] == turn) or (theBoard['4'] == turn and theBoard['5'] == turn and theBoard['6'] == turn) or (theBoard['7'] == turn and theBoard['8'] == turn and theBoard['9'] == turn) or (theBoard['1'] == turn and theBoard['4'] == turn and theBoard['7'] == turn) or (theBoard['2'] == turn and theBoard['5'] == turn and theBoard['8'] == turn) or (theBoard['3'] == turn and theBoard['6'] == turn and theBoard['9'] == turn) or (theBoard['1'] == turn and theBoard['5'] == turn and theBoard['9'] == turn) or (theBoard['3'] == turn and theBoard['5'] == turn and theBoard['7'] == turn):
         print(turn+' won!')
         if turn == 'X':
