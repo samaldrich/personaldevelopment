@@ -103,24 +103,8 @@ while True:
     # 验证棋盘格子是否被占用 check occupation of the cells
     checkCorrectCell()
     # 把X的选择输入到字典里 assgin X's choice to dictionary
-    if move == '1':
-        theBoard['1'] = turn
-    elif move == '2':
-        theBoard['2'] = turn
-    elif move == '3':
-        theBoard['3'] = turn
-    elif move == '4':
-        theBoard['4'] = turn
-    elif move == '5':
-        theBoard['5'] = turn
-    elif move == '6':
-        theBoard['6'] = turn
-    elif move == '7':
-        theBoard['7'] = turn
-    elif move == '8':
-        theBoard['8'] = turn
-    elif move == '9':
-        theBoard['9'] = turn
+    theBoard[move] = turn
+
     # 显示当前棋盘 display board
     printBoard(theBoard)
 
