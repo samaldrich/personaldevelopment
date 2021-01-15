@@ -39,7 +39,7 @@ def checkCorrectNumber():
         else:
             break
 
-# 验证棋盘格子是否被占用  check occupation of cells
+# 验证棋盘格子是否被占用  check occupation of the cells
 def checkCorrectCell():
     global turn
     global move
@@ -87,7 +87,7 @@ while True:
     print('It\'s '+turn+'\'s turn, where would you like to move?')
     # 验证键盘输入是否为数字1-9 check validation of input
     checkCorrectNumber()
-    # 验证棋盘格子是否被占用 check occupation of cells
+    # 验证棋盘格子是否被占用 check occupation of the cells
     checkCorrectCell()
     # 把X的选择输入到字典里 assgin X's choice to dictionary
     if move == '1':
@@ -111,12 +111,12 @@ while True:
     # 显示当前棋盘 display board
     printBoard(theBoard)
 
-    # 判断X是否赢了
+    # 判断X是否赢了 check if X wins
     if (theBoard['1'] == 'X' and theBoard['2'] == 'X' and theBoard['3'] == 'X') or (theBoard['4'] == 'X' and theBoard['5'] == 'X' and theBoard['6'] == 'X') or (theBoard['7'] == 'X' and theBoard['8'] == 'X' and theBoard['9'] == 'X') or (theBoard['1'] == 'X' and theBoard['4'] == 'X' and theBoard['7'] == 'X') or (theBoard['2'] == 'X' and theBoard['5'] == 'X' and theBoard['8'] == 'X') or (theBoard['3'] == 'X' and theBoard['6'] == 'X' and theBoard['9'] == 'X') or (theBoard['1'] == 'X' and theBoard['5'] == 'X' and theBoard['9'] == 'X') or (theBoard['3'] == 'X' and theBoard['5'] == 'X' and theBoard['7'] == 'X'):
         print('X won!')
         Xwin += 1
         LeaderBoard()
-        # 是否想再玩一遍
+        # 是否想再玩一遍 ask permission to play again
         while True:
             print('Would you like to play it again? (Y/N)')
             permission = input()
@@ -139,7 +139,7 @@ while True:
                 continue
         continue
 
-    # 判断格子是否满了
+    # 判断格子是否满了 check occupation of the board
     if theBoard['1'] != ' ' and theBoard['2'] != ' ' and theBoard['3'] != ' ' and theBoard['4'] != ' ' and theBoard['5'] != ' ' and theBoard['6'] != ' ' and theBoard['7'] != ' ' and theBoard['8'] != ' ' and theBoard['9'] != ' ':
         print('It\'s a draw!')
         print('Let\'s try again!')
@@ -153,7 +153,7 @@ while True:
     print('It\'s '+turn+'\'s turn, where would you like to move?')
     # 验证输入是否为数字1-9
     checkCorrectNumber()
-    # 验证棋盘格子是否被占用 check occupation of cells
+    # 验证棋盘格子是否被占用 check occupation of the cells
     checkCorrectCell()
     # 把O的选择输入到字典里 assgin O's choice to dictionary
     if move == '1':
