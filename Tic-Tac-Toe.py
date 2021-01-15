@@ -1,8 +1,6 @@
 import sys
 
 # 显示当前棋盘函数 display current board
-
-
 def printBoard(board):
     print('┏━━━┳━━━┳━━━┓')
     print('┃ '+board['1'] + ' ┃ ' + board['2'] + ' ┃ ' + board['3']+' ┃')
@@ -13,8 +11,6 @@ def printBoard(board):
     print('┗━━━┻━━━┻━━━┛')
 
 # 计分板 scorer
-
-
 def LeaderBoard():
     print('======================')
     print('LeaderBoard')
@@ -30,8 +26,6 @@ def resettheboard():
                 '5': ' ', '6': ' ', '7': ' ', '8': ' ', '9': ' '}
 
 # 验证键盘输入是否为数字1-9 check validation of input
-
-
 def checkCorrectNumber():
     global turn
     global move
@@ -46,8 +40,6 @@ def checkCorrectNumber():
             break
 
 # 验证棋盘格子是否被占用  check occupation of the cells
-
-
 def checkCorrectCell():
     global turn
     global move
@@ -100,14 +92,16 @@ while True:
     print('It\'s '+turn+'\'s turn, where would you like to move?')
     # 验证键盘输入是否为数字1-9 check validation of input
     checkCorrectNumber()
+
     # 验证棋盘格子是否被占用 check occupation of the cells
     checkCorrectCell()
+
     # 把X的选择输入到字典里 assgin X's choice to dictionary
     theBoard[move] = turn
 
     # 显示当前棋盘 display board
     printBoard(theBoard)
-
+    
     # 判断是否赢了 check if this player wins
     if (theBoard['1'] == turn and theBoard['2'] == turn and theBoard['3'] == turn) or (theBoard['4'] == turn and theBoard['5'] == turn and theBoard['6'] == turn) or (theBoard['7'] == turn and theBoard['8'] == turn and theBoard['9'] == turn) or (theBoard['1'] == turn and theBoard['4'] == turn and theBoard['7'] == turn) or (theBoard['2'] == turn and theBoard['5'] == turn and theBoard['8'] == turn) or (theBoard['3'] == turn and theBoard['6'] == turn and theBoard['9'] == turn) or (theBoard['1'] == turn and theBoard['5'] == turn and theBoard['9'] == turn) or (theBoard['3'] == turn and theBoard['5'] == turn and theBoard['7'] == turn):
         print(turn+' won!')
