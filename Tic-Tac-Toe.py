@@ -32,7 +32,7 @@ def checkCorrectNumber():
     global theBoard
     while True:
         move = input()
-        if move != '1' and move != '2' and move != '3' and move != '4' and move != '5' and move != '6' and move != '7' and move != '8' and move != '9':
+        if move not in ('1','2','3','4','5','6','7','8','9'):
             print('Please enter a number between 1-9 to move.')
             printBoard(theBoard)
             print('It\'s '+turn+'\'s turn, where would you like to move?')
@@ -101,7 +101,7 @@ while True:
 
     # 显示当前棋盘 display board
     printBoard(theBoard)
-    
+
     # 判断是否赢了 check if this player wins
     if (theBoard['1'] == turn and theBoard['2'] == turn and theBoard['3'] == turn) or (theBoard['4'] == turn and theBoard['5'] == turn and theBoard['6'] == turn) or (theBoard['7'] == turn and theBoard['8'] == turn and theBoard['9'] == turn) or (theBoard['1'] == turn and theBoard['4'] == turn and theBoard['7'] == turn) or (theBoard['2'] == turn and theBoard['5'] == turn and theBoard['8'] == turn) or (theBoard['3'] == turn and theBoard['6'] == turn and theBoard['9'] == turn) or (theBoard['1'] == turn and theBoard['5'] == turn and theBoard['9'] == turn) or (theBoard['3'] == turn and theBoard['5'] == turn and theBoard['7'] == turn):
         print(turn+' won!')
