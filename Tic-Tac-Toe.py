@@ -115,12 +115,12 @@ while True:
         while True:
             print('Would you like to play it again? (Y/N)')
             permission = input()
-            if permission == 'Y':
+            if permission.upper() == 'Y':
                 LeaderBoard()
                 resettheboard()
                 printBoard(theBoard)
                 break
-            elif permission == 'N':
+            elif permission.upper() == 'N':
                 LeaderBoard()
                 if Xwins > Owins:
                     print('Congratuations, X won!')
