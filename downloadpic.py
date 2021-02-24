@@ -1,4 +1,4 @@
-# This is a program to find and download all PNG pics from an url
+# This is a program to find and download all PNG pics from a url
 # It'll automatically download all PNG pics to this folder: C:\Users\USERNAME\Downloads\PICFOLDER
 
 import re
