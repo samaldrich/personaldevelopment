@@ -1,7 +1,7 @@
 # This is a program to find and download one piece comic from https://onepiecechapters.com
 # It'll automatically download all PNG pics to this folder: C:\Users\USERNAME\Downloads\PICFOLDER
 
-import re
+
 import requests
 import pathlib
 import bs4
@@ -45,3 +45,7 @@ for i in pageElem:
 
     for chunk in downloadTemp.iter_content(10000):
         fileImage.write(chunk)
+
+    fileImage.close()
+
+print('Download complete')
