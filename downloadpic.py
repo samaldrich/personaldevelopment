@@ -8,11 +8,15 @@ import bs4
 import lxml
 import os
 
+
+
 # replace this url with your url, keep the quotes('') . Don't leave any "/" at the end of the url
 url='https://onepiecechapters.com/manga/one-piece-chapter-1004'
 
+print(f'Start Downloading {url}')
+
 # generate PICFOLDER name and create this folder
-pathNameStr='C:\\Users\\'+os.getlogin()+'\\Downloads\\'+url.rsplit('/', 1)[-1]
+pathNameStr='C:\\Users\\'+os.getlogin()+'\\Downloads\\'+os.path.basename(url)
 pathName=pathlib.Path(pathNameStr)
 pathName.mkdir(parents=True,exist_ok=True)
 
@@ -30,8 +34,10 @@ page=bs4.BeautifulSoup(res.text,'lxml')
 
 # find all PNG pics on the webpage and download them
 result=imageRegex.findall(str(page))
+a=0
 for i in result:
-    fileName=i.rsplit('/', 1)[-1]
+    fileName=str(a)+'.png'
+    a=a+1
     print(f'Downloading {fileName} ...')
     resImage=requests.get(i)
     resImage.raise_for_status()
